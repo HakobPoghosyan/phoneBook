@@ -9,18 +9,20 @@
 #include "Validator.cpp"
 using namespace std;
 
-Person *person(string name, string surname, string separator, string phoneNumber)
-{
-    Person *obj = new Person("", "", "", "");
-    return obj;
+void printf(Person **arr, int count) {
+    for ( int i = 0; i < count; i++)  {
+        cout << arr[i]->name;
+        cout << arr[i]-> surname;
+        cout << arr[i]->separator;
+        cout << arr[i]->phoneNumber;
+    }
 }
 
 void removeFile(string dir_name)
 {
-    char *fileName;
     int len = dir_name.length();
 
-    fileName = (char *)malloc(len + 1);
+    char *fileName = (char *)malloc(len + 1);
 
     for (int i = 0; i < len; i++)
     {
@@ -33,9 +35,9 @@ void removeFile(string dir_name)
 
 string openFile()
 {
-    const string open = "Enter the file name to open: ";
+    const string OPEN = "Enter the file name to open: ";
     string fileName;
-    cout << open;
+    cout << OPEN;
     cin >> fileName;
 
     return fileName;
@@ -56,10 +58,10 @@ int main()
 
     sortFunc.sort(arr, count);
 
-    const string fileName = "PhoneBook.txt";
-    removeFile(fileName);
-    contact.addContentFile(arr, fileName, count);
-    phoneBookFile.filePrintLine(fileName);
+    const string FILE_NAME = "PhoneBook.txt";
+    removeFile(FILE_NAME);
+    contact.addContentFile(arr, FILE_NAME, count);
+    phoneBookFile.filePrintLine(FILE_NAME);
 
     valid.arrValid(arr, count);
 
